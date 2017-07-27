@@ -1,18 +1,13 @@
-import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
-// import { bindActionCreators } from 'redux';
+import React from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-// import * as actionsObj from '../../state-management/actions';
-import logo from './logo.svg';
+import * as counter from './actions/counter';
 import './App.css';
 
 export class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   
   incrementCount() {
-    this.props.actions.incrementCount();
+    this.props.actions.counter.incrementCount();
   }
   
   render() {
@@ -25,25 +20,22 @@ export class App extends React.Component {
   }
 }
 
-App.propTypes = {
-  actions: PropTypes.object,
-  counter: PropTypes.object,
-};
- 
+// state binding
 const mapStateToProps = (state) => {
-  //const { counter } = state;
+  const { counter } = state;
   return {
-    counter : { count: 11},
+    counter,
   };
 };
 
+// dispatch-binding
 const mapDispatchToProps = (dispatch) => {
   return {
     actions: {
-      // counter: bindActionCreators(actionsObj.api, dispatch),
-      counter: () => {
-        console.log('incrementing')
-      }
+      counter: bindActionCreators(counter, dispatch),
+      // incrementCount: () => {
+      //   console.log('incrementing ...')
+      // }
     },
   }
 }
