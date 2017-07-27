@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 import rootReducer from './reducers';
 
-export const storeX = () => {
+export const storeGlobal = () => {
   return createStore(rootReducer);
 }

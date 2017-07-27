@@ -14,7 +14,8 @@ export class App extends React.Component {
     return (
       <div>
         <div>{this.props.counter.count}</div>
-        <button onClick={this.incrementCount.bind(this)} className="button-primary"> Click me </button>
+        <button onClick={this.incrementCount.bind(this)} className="button-primary"> + </button>
+        <button onClick={ () => {this.props.actions.counter.decrementCount();} } className="button-primary"> - </button>
       </div>
     )
   }

@@ -3,11 +3,13 @@ export const counter = (state = {count: 12}, action) => {
 
   switch (action.type) {
     case 'INCREMENT':
-      state.count= state.count + 1
-      return state;
+      return Object.assign({}, state, {
+        count: state.count + 1,
+      });
     case 'DECREMENT':
-      state.count=state.count - 1
-      return state;
+      return Object.assign({}, state, {
+        count: state.count - 1,
+      });
     default:
       return state
   }
